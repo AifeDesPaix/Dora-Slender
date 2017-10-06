@@ -4,62 +4,54 @@ import {Scene, Vector3} from "three";
 
 export class Room {
 
-    private width: number;
-    private length: number;
-    private height: number;
+    private _width: number;
+    private _length: number;
+    private _height: number;
 
     private walls: Wall[];
     private flour: Flour;
 
     constructor(width: number, length: number, height: number) {
-        this.width = width;
-        this.length = length;
-        this.height = height;
+        this._width = width;
+        this._length = length;
+        this._height = height;
 
         this.addWalls();
 
         this.flour = new Flour(width, length);
     }
 
-    private addWalls() {
-        this.walls = [
-            new Wall(this.length, this.height),
-            new Wall(this.length, this.height),
-            new Wall(this.width, this.height),
-            new Wall(this.width, this.height)
-        ];
-
-        this.walls[0].box.position.y = this.height/2;
-        this.walls[1].box.position.y = this.height/2;
-        this.walls[2].box.position.y = this.height/2;
-        this.walls[3].box.position.y = this.height/2;
-
-        this.walls[0].box.position.z = -this.width/2;
-        this.walls[1].box.position.z = this.width/2;
-
-        this.walls[2].box.rotation.y = Math.PI / 2;
-        this.walls[3].box.rotation.y = Math.PI / 2;
-
-        this.walls[2].box.position.x = this.length/2;
-        this.walls[2].box.position.x = this.length/2;
-        this.walls[3].box.position.x = this.length/2;
-        this.walls[3].box.position.x = -this.length/2;
-        // this.walls[1].box.position.y = this.height/2;
-        // this.walls[1].box.position.z = this.width/2;
-        // this.walls[1].box.rotation.z = 10;
-        // this.walls[1].box.position.y = -this.width/2;
-        // this.walls[2].box.position.x = this.height/2;
-        // this.walls[3].box.position.x = -this.height/2;
-    }
-
     public addTo(scene: Scene) {
-        console.log(this.flour.box);
-        scene.add(this.flour.box);
+        this.flour.addTo(scene);
 
         for (let i = 0; i < this.walls.length; i++) {
-            console.log(this.walls[i]);
-            scene.add(this.walls[i].box);
+            this.walls[i].addTo(scene);
         }
+    }
+
+    private addWalls() {
+        // this.walls = [
+        //     new Wall(this._length, this._height),
+        //     new Wall(this._length, this._height),
+        //     new Wall(this._width, this._height),
+        //     new Wall(this._width, this._height)
+        // ];
+        //
+        // this.walls[0].box.position.y = this._height/2;
+        // this.walls[1].box.position.y = this._height/2;
+        // this.walls[2].box.position.y = this._height/2;
+        // this.walls[3].box.position.y = this._height/2;
+        //
+        // this.walls[0].box.position.z = -this._width/2;
+        // this.walls[1].box.position.z = this._width/2;
+        //
+        // this.walls[2].box.rotation.y = Math.PI / 2;
+        // this.walls[3].box.rotation.y = Math.PI / 2;
+        //
+        // this.walls[2].box.position.x = this._length/2;
+        // this.walls[2].box.position.x = this._length/2;
+        // this.walls[3].box.position.x = this._length/2;
+        // this.walls[3].box.position.x = -this._length/2;
     }
 
     public animate() {

@@ -1,15 +1,16 @@
 import {DirectionalLight, Scene} from "three";
-import {Flour} from "./Elements/Flour";
-import {House} from "./Elements/House";
+import {Editor} from "../Editor";
 
 export class Map {
 
     private scene: Scene;
     // private lights: DirectionalLight[];
-    private mainHouse: House;
+    // private mainHouse: House;
+    private editor: Editor;
 
     constructor(scene) {
         this.scene = scene;
+        this.editor = new Editor();
 
         // this.addLights();
 
@@ -22,8 +23,8 @@ export class Map {
         // this.floor = new Flour();
         // this.scene.add(this.floor.box);
 
-        this.mainHouse = new House();
-        this.mainHouse.addTo(this.scene);
+        // this.mainHouse = new House();
+        // this.mainHouse.addTo(this.scene);
 
     }
 
@@ -40,6 +41,6 @@ export class Map {
     // }
 
     public animate() {
-        this.mainHouse.animate();
+        // this.mainHouse.animate();
     }
 }

@@ -33,6 +33,7 @@
     "webpack-dev-server": "latest"
   },
   "dependencies": {
+    "@types/jquery": "^3.2.13",
     "@types/three": "latest",
     "three": "latest",
     "three-orbitcontrols-ts": "^0.1.2"

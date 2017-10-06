@@ -1,12 +1,12 @@
 // add style
-import './style.css'
+import './style.css';
 import {SlenderDora} from "./SlenderDora";
 
 const game = new SlenderDora();
 
 function animate(): void {
-	requestAnimationFrame(animate)
-	render()
+	requestAnimationFrame(animate);
+	render();
 }
 
 function render(): void {
